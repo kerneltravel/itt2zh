@@ -231,7 +231,7 @@ adipiscing elit.</pre>
                 <p>我们之前使用<var>RequestHandler</var>对象的<var>get_argument</var>方法来捕获请求查询字符串的的参数。同样，我们也可以使用相同的方法来获得<dfn>POST</dfn>请求传递的参数。（Tornado可以解析URLencoded和multipart结构的<dfn>POST</dfn>请求）。一旦我们从<dfn>POST</dfn>中获得了文本和宽度的参数，我们使用Python内建的<var>textwrap</var>模块来以指定的宽度装饰文本，并将结果字符串写回到HTTP响应中。</p>
 
                 <h3>1.2.3 关于RequestHandler的更多知识<a class="headerlink" id="ch1-2-3" href="#ch1-2-3">&para;</a></h3>
-                <p>到目前为止，我们已经了解了<var>RequestHandler</var>对象的基础：如何从一个传入的HTTP请求中获得信息（使用<var>get_argument</var>和传入到<var>get</var>和<Var>post</var>的参数）以及写HTTP响应（使用<var>write</var>方法）。除此之外，还有很多需要学习的，我们将在接下来的章节中进行讲解。同时，还有一些关于<var>RequestHandler</var>和Tornado如何使用它的只是需要记住。</p>
+                <p>到目前为止，我们已经了解了<var>RequestHandler</var>对象的基础：如何从一个传入的HTTP请求中获得信息（使用<var>get_argument</var>和传入到<var>get</var>和<Var>post</var>的参数）以及写HTTP响应（使用<var>write</var>方法）。除此之外，还有很多需要学习的，我们将在接下来的章节中进行讲解。同时，还有一些关于<var>RequestHandler</var>和Tornado如何使用它的知识需要记住。</p>
 
                 <h4>1.2.3.1 HTTP方法<a class="headerlink" id="ch1-2-3-1" href="#ch1-2-3-1">&para;</a></h4>
                 <p>截止到目前讨论的例子，每个<var>RequestHandler</var>类都只定义了一个HTTP方法的行为。但是，在同一个处理函数中定义多个方法是可能的，并且是有用的。把概念相关的功能绑定到同一个类是一个很好的方法。比如，你可能会编写一个处理函数来处理数据库中某个特定ID的对象，既使用<dfn>GET</dfn>方法，也使用<dfn>POST</dfn>方法。想象<dfn>GET</dfn>方法来返回这个部件的信息，而<dfn>POST</dfn>方法在数据库中对这个ID的部件进行改变：</p>
@@ -259,7 +259,7 @@ class FrobHandler(tornado.web.RequestHandler):
         self.write(frob.serialize())</pre>
                 
                 <h4>1.2.3.2 HTTP状态码<a class="headerlink" id="ch1-2-3-2" href="#ch1-2-3-2">&para;</a></h4>
-                <p>从上面的代码可以看出，你可以使用<var>RequestHandler</var>类的<var>ser_status()</var>方法显式地设置HTTP状态码。然而，你需要记住在某些情况下，Tornado会自动地设置HTTP状态码。下面是一个常用情况的纲要：</p>
+                <p>从上面的代码可以看出，你可以使用<var>RequestHandler</var>类的<var>set_status()</var>方法显式地设置HTTP状态码。然而，你需要记住在某些情况下，Tornado会自动地设置HTTP状态码。下面是一个常用情况的纲要：</p>
                 <h5>404 Not Found</h5>
                 <p class="indentation">Tornado会在HTTP请求的路径无法匹配任何<var>RequestHandler</var>类相对应的模式时返回404（Not Found）响应码。</p>
                 <h5>400 Bad Request</h5>
