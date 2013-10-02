@@ -295,7 +295,7 @@ if __name__ == '__main__':
     server.listen(options.port)
     tornado.ioloop.IOLoop.instance().start()</pre>
                 </div>
-                <p>这个例子中<var>ui_module</var>字典里只有一项，它把到名为<var>Hello</var>的模块的引用和我们定义的<var>HelloModule</var>类结合了起来。</p>
+                <p>这个例子中<var>ui_modules</var>字典里只有一项，它把到名为<var>Hello</var>的模块的引用和我们定义的<var>HelloModule</var>类结合了起来。</p>
                 <p>现在，当调用<var>HelloHandler</var>并渲染<span class="filename">hello.html</span>时，我们可以使用<var>{% module Hello() %}</var>模板标签来包含<var>HelloModule</var>类中<var>render</var>方法返回的字符串。</p>
                 <pre class="codelist-code">&lt;html&gt;
     &lt;head&gt;&lt;title&gt;UI Module Example&lt;/title&gt;&lt;/head&gt;
